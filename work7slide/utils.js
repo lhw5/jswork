@@ -41,7 +41,7 @@ function showLog(logValues,showElement){
     //遍历row数组，构建显示当前排序状态的html代码
     for(const key in row){
         //根据定位指针数据把进行比较的数字编程红色
-        let color = pos.indexOf(Number(key)) > -1 ? 'color:yellow;' : ''
+        let color = pos.indexOf(Number(key)) > -1 ? 'color:red;' : ''
         //设置字体的大小等HTML代码
         str += '<span style="font-size:' + row[key] * 20 + 'px;' +
                 color + '">' + row[key] + '</span>'
@@ -57,20 +57,20 @@ function showLog(logValues,showElement){
 //插入排序
 function insertSort(str){
     let arr = str.split(',')
-    let nsLog = []
+    let hwLog = []
     for (let i=1;i<arr.length;i++){
         for (let j=i;j>0;j--){
-            nsLog.push([arr.concat(),[j,j+1]])
-            nsLog.push([arr.concat(),[j,j+1]])
-            nsLog.push([arr.concat(),[j,j+1]])
+            hwLog.push([arr.concat(),[j,j-1]])
+            hwLog.push([arr.concat(),[j,j-1]])
+            hwLog.push([arr.concat(),[j,j-1]])
             if(arr[j - 1]>arr[j]){
-                [arr[j-1],arr[j]] = [arr[j],arr[j-1]]
-                nsLog.push([arr.concat(),[j,j+1]])
+              [arr[j - 1],arr[j]] = [arr[j],arr[j-1]]
+                hwLog.push([arr.concat(),[j,j-1]])
             }
         }
     }
-    nsLog.push([arr.concat(),[-1,-1]])
-return nsLog
+    hwLog.push([arr.concat(),[-1,-1]])
+return hwLog
 }
 function showLog(logValues,showElement){
     let str = ''
@@ -79,7 +79,7 @@ function showLog(logValues,showElement){
         value: [row,pos]
     } = logValues.next()
     for(const key in row){
-        let color = pos.indexOf(Number(key)) > -1 ? 'color:yellow;' : ''
+        let color = pos.indexOf(Number(key)) > -1 ? 'color:red;' : ''
         str += '<span style="font-size:' + row[key] * 20 + 'px;' + 
                 color + '">' + row[key] + '</span>'
     }  

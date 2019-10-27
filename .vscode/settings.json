@@ -1,3 +1,4 @@
 {
-  "open-in-browser.default": "QQ浏览器"  
+  "view-in-browser.customBrowser": "chrome",
+  "open-in-browser.default": "chrome"
 }
