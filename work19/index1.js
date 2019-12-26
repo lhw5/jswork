@@ -25,7 +25,7 @@ document.getElementById('upload').onclick = function () {
 
         }
     };
-    // xhr.open('POST', 'http://localhost:8080/upload');
+     //xhr.open('POST', 'http://localhost:8080/upload');
     xhr.open('POST', 'http://139.9.81.203:8090/upload');
     xhr.send(fd);
 };

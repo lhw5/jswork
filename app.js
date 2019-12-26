@@ -13,6 +13,11 @@ var storage = multer.diskStorage({
     destination: function(req,file,cb){
         cb(null,'../uploads')
     },
+    //给上传文件重命名，获取添加后缀名
+    filename:function(req,file,cb){
+        var fileFormat = (file.originalname).split(".");
+        cb(null,file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length-1]);
+    }
 });
 let upload = multer({storage: storage})
 //单文件上传获取信息
@@ -95,7 +100,7 @@ var server = ws.createServer(function (conn){
     conn.on("close",function(code,reason){
         console.log("Connection closed")
     })
-}).listen(8080,()=>console.log('socket server listening on:8081'))
+}).listen(8081,()=>console.log('socket server listening on:8081'))
 
 function broadcast(server,msg){
     server.connections.forEach(function (conn){
