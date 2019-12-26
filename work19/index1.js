@@ -12,7 +12,7 @@ document.getElementById('upload').onclick = function () {
     };
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.ststus < 200 || xhr.status >= 300 && xhr.status !== 304) {
+            if (xhr.status < 200 || xhr.status >= 300 && xhr.status !== 304) {
                throw new Error('文件上传失败，服务器状态异常。');
             }
             var name = xhr.responseText;
@@ -25,6 +25,7 @@ document.getElementById('upload').onclick = function () {
 
         }
     };
+    // xhr.open('POST', 'http://localhost:8080/upload');
     xhr.open('POST', 'http://139.9.81.203:8090/upload');
     xhr.send(fd);
 };
